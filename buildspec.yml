@@ -1,0 +1,15 @@
+version: 0.2
+
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started 
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build completed 
+artifacts:
+  files:
+    - target/authorization-service.jar
