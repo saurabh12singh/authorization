@@ -23,7 +23,7 @@ import com.cognizant.authorizationService.service.JwtUtil;
  * getting the token and validating the token this class will be used.
  */
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://mfpe-portfolio-pod5.s3-website-us-west-2.amazonaws.com")
 public class AuthController {
 	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
