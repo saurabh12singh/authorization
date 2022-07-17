@@ -11,12 +11,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtUtil {
 	private static Logger logger = LoggerFactory.getLogger(JwtUtil.class);
+	public static final long TOKEN_VALIDITY = 15*60;
 /**
  * creating a secret key for token, can be changed to anything
  */
@@ -89,6 +91,7 @@ public class JwtUtil {
 
 		String compact = Jwts.builder().setClaims(claims).setSubject(subject)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS256, secretkey).compact();
 		logger.info("END");
 
@@ -114,6 +117,9 @@ public class JwtUtil {
 			logger.info("END");
 
 			return true;
+		} catch (ExpiredJwtException e) {
+			logger.info("Token Expired");
+			return false;
 		} catch (Exception e) {
 			logger.info("EXCEPTION");
 			return false;
