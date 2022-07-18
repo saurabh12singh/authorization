@@ -21,10 +21,6 @@ public class AdminDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
-/**
- * Get UserData using JpaRepository, to get data by username,
- * throw exceptions if user not found
- */
 	@Override
 	public UserDetails loadUserByUsername(String uid) {
 		logger.info("START");
