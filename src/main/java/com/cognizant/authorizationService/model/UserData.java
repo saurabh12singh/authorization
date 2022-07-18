@@ -7,9 +7,6 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
-/*
- * JPA Class is used for creating table in database.
- */
 @Component
 @Entity
 @Table(name = "userdata")
