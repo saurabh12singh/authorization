@@ -1,10 +1,7 @@
 package com.cognizant.authorizationService.model;
 
 public class AuthResponse {
-/*
- * This model class will hold the data for user id,
- * name and isValid
- */
+
 	private String uid;
 	private String name;
 	private boolean isValid;
